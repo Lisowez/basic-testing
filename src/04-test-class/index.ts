@@ -76,3 +76,4 @@ export class InsufficientFundsError extends Error {
     super(`Insufficient funds: cannot withdraw more than ${balance}`);
   }
 }
+
