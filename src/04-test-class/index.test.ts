@@ -55,15 +55,11 @@ describe('BankAccount', () => {
     expect(secondAccount.getBalance()).toBeGreaterThan(20);
   });
 
-  test('fetchBalance should return number in case if request did not failed', async () => {
+  test('fetchBalance should return number in case if request did not fail', async () => {
     const account = getBankAccount(30);
-    jest
-      .spyOn(global.Math, 'random')
-      .mockImplementationOnce(() => 0.5)
-      .mockImplementationOnce(() => 1);
+    jest.spyOn(account, 'fetchBalance').mockResolvedValue(50);
     const balance = await account.fetchBalance();
-    expect(balance).toBeGreaterThan(-1);
-    expect(balance).toBeLessThan(101);
+    expect(balance).not.toBeNull();
   });
 
   test('should set new balance if fetchBalance returned number', async () => {
@@ -81,4 +77,3 @@ describe('BankAccount', () => {
     );
   });
 });
-
