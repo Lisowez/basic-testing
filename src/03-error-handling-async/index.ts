@@ -19,3 +19,4 @@ export class MyAwesomeError extends Error {
     super('This is my awesome custom error!');
   }
 }
+
